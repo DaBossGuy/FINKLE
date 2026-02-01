@@ -181,7 +181,7 @@ client.on(Events.MessageCreate, async (message) => {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    "model": "cognitivecomputations/dolphin-mistral-24b-venice-edition:free",
+                    "model": "liquid/lfm-2.5-1.2b-instruct:free",
                     "messages": apiMessages // We send the whole conversation history
                 })
             });
