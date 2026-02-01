@@ -181,7 +181,7 @@ client.on(Events.MessageCreate, async (message) => {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    "model": "meta-llama/llama-3.3-70b-instruct:free",
+                    "model": "arcee-ai/trinity-mini:free",
                     "messages": apiMessages // We send the whole conversation history
                 })
             });
