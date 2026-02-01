@@ -181,7 +181,7 @@ client.on(Events.MessageCreate, async (message) => {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    "model": "qwen/qwen-2.5-vl-7b-instruct:free",
+                    "model": "openrouter/free",
                     "messages": apiMessages // We send the whole conversation history
                 })
             });
