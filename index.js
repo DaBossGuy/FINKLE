@@ -138,7 +138,7 @@ client.on(Events.MessageCreate, async (message) => {
         try {
             // --- A. FETCH HISTORY ---
             // Fetch the last 30 messages from the channel
-            const fetchedMessages = await message.channel.messages.fetch({ limit: 30 });
+            const fetchedMessages = await message.channel.messages.fetch({ limit: 12 });
 
             // Discord gives us data "Newest First". We need to reverse it to "Oldest First"
             // so the AI reads the conversation in chronological order.
