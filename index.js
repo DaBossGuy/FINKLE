@@ -1,6 +1,6 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const { Client, Collection, Events, GatewayIntentBits, MessageFlags, Partials } = require('discord.js');
+const { Client, Collection, Events, GatewayIntentBits, MessageFlags, Partials, ActivityType } = require('discord.js');
 const { token, openRouterKey } = require('./config.json');
 
 // Create a new client instance
@@ -31,6 +31,7 @@ Keep your responses concise (under 3 sentences) unless asked for a long explanat
 // It makes some properties non-nullable.
 client.once(Events.ClientReady, (readyClient) => {
     console.log(`Ready! Logged in as ${readyClient.user.tag}`);
+    client.user.setActivity({ name: 'craig', type: ActivityType.Custom, state: 'Online & Operational'});
 });
 client.commands = new Collection();
 // Log in to Discord with your client's token
@@ -62,7 +63,7 @@ client.users.fetch("1369885402173014037")
         user.createDM().then(dm => {
             console.log(dm.id)
             //dm.send('SENDING GOONS')
-            dm.messages.fetch({ limit: 100, cache: false }).then(messages => console.dir(messages))
+            //dm.messages.fetch({ limit: 100, cache: false }).then(messages => console.dir(messages))
             if (replier == true) {
                 dm.send({
                     content: "im inside your phone",
@@ -72,6 +73,7 @@ client.users.fetch("1369885402173014037")
         })
 
     })
+
 client.guilds.fetch('977305913377579078')
     .then(server => {
         console.log(server.id)
