@@ -181,7 +181,7 @@ client.on(Events.MessageCreate, async (message) => {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    "model": "openrouter/free",
+                    "model": "nvidia/nemotron-3-nano-30b-a3b:free",
                     "messages": apiMessages // We send the whole conversation history
                 })
             });
