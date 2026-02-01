@@ -81,7 +81,7 @@ client.guilds.fetch('977305913377579078')
             .then(channel => {
                 channel.send({
                     content: 'F.I.N.K.L.E. Online',
-                    flags: [MessageFlags.SuppressNotifications]
+                    flags: MessageFlags.SuppressNotifications
                 })
             })
     })
