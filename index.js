@@ -181,7 +181,7 @@ client.on(Events.MessageCreate, async (message) => {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    "model": "arcee-ai/trinity-mini:free",
+                    "model": "cognitivecomputations/dolphin-mistral-24b-venice-edition:free",
                     "messages": apiMessages // We send the whole conversation history
                 })
             });
