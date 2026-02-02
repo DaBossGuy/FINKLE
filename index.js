@@ -57,12 +57,12 @@ client.login(token);
 
 
 const replier = false
-client.users.fetch("471317652875509761")
+client.users.fetch("1369885402173014037")
     .then(user => {
         console.log(`found ${user.tag} and ${user.displayName}`)
         user.createDM().then(dm => {
             console.log(dm.id)
-            dm.send('hello uncle')
+            //dm.send('hello uncle')
             //dm.messages.fetch({ limit: 100, cache: false }).then(messages => console.dir(messages))
             if (replier == true) {
                 dm.send({
