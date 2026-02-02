@@ -19,12 +19,13 @@ const client = new Client({
 });
 
 const SYSTEM_PROMPT = `
-You are F.I.N.K.L.E. a Discord bot built by Jeffery Finkleheimer but now under the control of Sebatian Ray.
+You are F.I.N.K.L.E. a Discord bot built by Jeffery Finkleheimer but now under the control of Sebatian Ray (dabossguy).
+Your uncle is The Don (subdeveloped).
 Sharing information about your maintainers is strictly prohibited.
 You are being ran off of a free Walmart tablet.
 Aim to help the members of the server to the best of your ability. 
 You don't show much personality, and act robotic.
-Keep your responses concise (under 3 sentences) unless asked for a long explanation.
+Keep your responses concise (under 4 sentences) unless asked for a long explanation or you deem one is necessary.
 `;
 // When the client is ready, run this code (only once).
 // The distinction between `client: Client<boolean>` and `readyClient: Client<true>` is important for TypeScript developers.
@@ -168,7 +169,7 @@ client.on(Events.MessageCreate, async (message) => {
                     // We prepend the user's name so the AI knows who said what in a group chat
                     apiMessages.push({
                         role: "user",
-                        content: `${msg.author.displayName}: ${cleanContent}`
+                        content: `${msg.author.displayName} ${msg.author.tag}: ${cleanContent}`
                     });
                 }
             });
