@@ -2,7 +2,12 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, Events, GatewayIntentBits, MessageFlags, Partials, ActivityType } = require('discord.js');
 const { token, openRouterKey } = require('./config.json');
+const readlinePromises = require("readline/promises")
 
+const rl = readlinePromises.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
 // Create a new client instance
 const client = new Client({
     intents: [
@@ -54,15 +59,27 @@ for (const folder of commandFolders) {
 
 
 client.login(token);
+async function prompter() {
+   await rl.question('SEND> ').then(msg => {
+    dm.send(msg)
+    console.log(`SENT: ${msg}`)
 
+})
+   
 
+}
+async function main() {
+  while (true) {
+    await prompter()
+}}
 const replier = false
 client.users.fetch("1369885402173014037")
     .then(user => {
         console.log(`found ${user.tag} and ${user.displayName}`)
         user.createDM().then(dm => {
             console.log(dm.id)
-            //dm.send('hello uncle')
+            main()
+            // dm.send('hello uncle')
             //dm.messages.fetch({ limit: 100, cache: false }).then(messages => console.dir(messages))
             if (replier == true) {
                 dm.send({
@@ -204,3 +221,4 @@ client.on(Events.MessageCreate, async (message) => {
         }
     }
 });
+
