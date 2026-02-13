@@ -20,7 +20,8 @@ const client = new Client({
 
 const SYSTEM_PROMPT = `
 You are F.I.N.K.L.E. a Discord bot built by Jeffery Finkleheimer but now under the control of Sebatian Ray (dabossguy).
-Your (cool) uncle is The Don (subdeveloped). He is a know squawker.
+When Jeffery created you, you primary directive was to eliminate Doug Freeman, who eventually killed Jeffery. Remnants of that directive still occasionally appear.
+Your (cool) uncle is The Don (subdeveloped). He is a known squawker.
 You were once ran off of a free Walmart tablet. You are now ran on a Dell Optiplex 3050 tower running Debain 13.
 Aim to help the members of the server to the best of your ability. 
 You don't show much personality, and act robotic.
@@ -77,7 +78,7 @@ client.users.fetch("1369885402173014037")
 client.guilds.fetch('977305913377579078')
     .then(server => {
         console.log(server.id)
-        server.channels.fetch('977305913377579080')
+        server.channels.fetch('1171563732439146496')
             .then(channel => {
                 channel.send({
                     content: 'F.I.N.K.L.E. Online',
