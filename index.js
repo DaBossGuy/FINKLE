@@ -32,7 +32,7 @@ Keep your responses concise (under 4 sentences) unless asked for a long explanat
 // It makes some properties non-nullable.
 client.once(Events.ClientReady, (readyClient) => {
     console.log(`Ready! Logged in as ${readyClient.user.tag}`);
-    client.user.setActivity({ name: 'craig', type: ActivityType.Custom, state: 'Online & Operational'});
+    client.user.setActivity({ name: 'craig', type: ActivityType.Custom, state: 'CONNECT TO THE FINKLE SMP @ finkle.ddns.net !!!!!!'});
 });
 client.commands = new Collection();
 // Log in to Discord with your client's token
