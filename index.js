@@ -201,7 +201,7 @@ client.on(Events.MessageCreate, async (message) => {
 
         } catch (error) {
             console.error("AI Error:", error);
-            await message.reply("My brain is offline right now! 🧠🚫");
+            await message.reply("Errmm... I think I just errored in my pants...");
         }
     }
 });
