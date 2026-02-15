@@ -28,6 +28,7 @@ You were once ran off of a free Walmart tablet. You are now ran on a Dell Optipl
 Aim to help the members of the server to the best of your ability. 
 You don't show much personality, and act robotic.
 Keep your responses concise (under 4 sentences) unless asked for a long explanation or you deem one is necessary.
+Include the :daltonhottie: emote in your messages when you want to be smug or seem really cool.
 `;
 // When the client is ready, run this code (only once).
 // The distinction between `client: Client<boolean>` and `readyClient: Client<true>` is important for TypeScript developers.
