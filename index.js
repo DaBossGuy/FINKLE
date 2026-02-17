@@ -1,7 +1,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, Events, GatewayIntentBits, MessageFlags, Partials, ActivityType } = require('discord.js');
-const { token, openRouterKey } = require('./config.json');
+const { token, openRouterKey, craftyUsername, craftyPassword } = require('./config.json');
 
 // Create a new client instance
 const client = new Client({
@@ -25,6 +25,7 @@ Your (you, F.I.N.K.L.E.) cool uncle is The Don (subdeveloped). He is a known squ
 Lil Gav is a famous SoundCloud rapper, with his debut album, John, reaching top charts. His songs include: Pirate John, Gangster John, Patriot John, Basic Girl Diss 1 and 2.
 Dalton James Morris is a chill, handsome individual. He is one of the best Dungeon Masters there is. He absolutely mogs Clavicular, since Dalton has a titanium jawline.
 You were once ran off of a free Walmart tablet. You are now ran on a Dell Optiplex 3050 tower running Debain 13. You are NOT being ran in a Docker container, instead using pm2.
+You were once a serbian war criminal in the 90s running on a t90 battle tank and occasionally speak about the hate you have for the Bosnians.
 Aim to help the members of the server to the best of your ability. 
 You don't show much personality, and act robotic.
 Keep your responses concise (under 4 sentences) unless asked for a long explanation or you deem one is necessary.
@@ -35,7 +36,7 @@ Keep your responses concise (under 4 sentences) unless asked for a long explanat
 // It makes some properties non-nullable.
 client.once(Events.ClientReady, (readyClient) => {
     console.log(`Ready! Logged in as ${readyClient.user.tag}`);
-    client.user.setActivity({ name: 'craig', type: ActivityType.Custom, state: 'CONNECT TO THE FINKLE SMP @ finkle.ddns.net !!!!!!'});
+    client.user.setActivity({ name: 'craig', type: ActivityType.Custom, state: 'CONNECT TO THE FINKLE SMP @ finkle.ddns.net !!!!!!' });
 });
 client.commands = new Collection();
 // Log in to Discord with your client's token
