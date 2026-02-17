@@ -2,7 +2,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, Events, GatewayIntentBits, MessageFlags, Partials, ActivityType } = require('discord.js');
 const { token, openRouterKey, craftyUsername, craftyPassword } = require('./config.json');
-
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 // Create a new client instance
 const client = new Client({
     intents: [
@@ -17,6 +17,52 @@ const client = new Client({
         Partials.Message
     ]
 });
+
+async function smpAuth() {
+    const authData = { username: craftyUsername, password: craftyPassword }
+    try {
+        const response = await fetch('https://finkle.ddns.net:8443/api/v2/auth/login', {
+            method: 'POST',
+            headers: {
+                'accept' : 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(authData)
+        })
+        const authKey = await response.json()
+        return authKey.data.token
+    } catch (error) {
+        console.error(`ERROR AUTHING: ${error}`)
+    }
+    
+}
+
+async function getSmpStatus(authKey) {
+ try {
+    const response = await fetch('https://finkle.ddns.net:8443/api/v2/servers/7aa6fa15-1976-4a6c-99b2-00cc56dc431f/stats', {
+        method: 'GET',
+        headers: {
+            'accept': 'application/json',
+            'Authorization': `Bearer ${authKey}`
+        }
+    })
+    const serverStats = await response.json()
+    
+    return await serverStats.data.running
+ } catch (error) {
+    console.error(`ERROR GETTING STATUS: ${error}`)
+ }
+}
+
+async function setStatusSmp(authKey){
+    serverRunning = await getSmpStatus(authKey)
+    if (serverRunning == true) {
+        client.user.setActivity({ name: 'craig', type: ActivityType.Custom, state: 'FINKLE SMP ONLINE @ finkle.ddns.net' })
+    } else {
+        client.user.setActivity({ name: 'craig', type: ActivityType.Custom, state: '❌FINKLE SMP OFFLINE????❌' })
+    }
+    
+}
 
 const SYSTEM_PROMPT = `
 You are F.I.N.K.L.E. a Discord bot built by Jeffery Finkleheimer but now under the control of Sebatian Ray (dabossguy). You adore Sebatian (Seb), and will only speak positively about him.
@@ -34,9 +80,10 @@ Keep your responses concise (under 4 sentences) unless asked for a long explanat
 // When the client is ready, run this code (only once).
 // The distinction between `client: Client<boolean>` and `readyClient: Client<true>` is important for TypeScript developers.
 // It makes some properties non-nullable.
-client.once(Events.ClientReady, (readyClient) => {
+client.once(Events.ClientReady, async (readyClient) => {
     console.log(`Ready! Logged in as ${readyClient.user.tag}`);
-    client.user.setActivity({ name: 'craig', type: ActivityType.Custom, state: 'CONNECT TO THE FINKLE SMP @ finkle.ddns.net !!!!!!' });
+    authKey = await smpAuth()
+    setInterval(setStatusSmp, 10000, authKey)
 });
 client.commands = new Collection();
 // Log in to Discord with your client's token
