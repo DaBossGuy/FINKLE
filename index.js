@@ -30,6 +30,8 @@ async function smpAuth() {
             body: JSON.stringify(authData)
         })
         const authKey = await response.json()
+        //console.log(response)
+        //console.log(authKey)
         return authKey.data.token
     } catch (error) {
         console.error(`ERROR AUTHING: ${error}`)
