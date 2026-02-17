@@ -37,8 +37,9 @@ async function smpAuth() {
     
 }
 
-async function getSmpStatus(authKey) {
- try {
+async function getSmpStatus() {
+    const authKey = await smpAuth()
+    try {
     const response = await fetch('https://finkle.ddns.net:8443/api/v2/servers/7aa6fa15-1976-4a6c-99b2-00cc56dc431f/stats', {
         method: 'GET',
         headers: {
