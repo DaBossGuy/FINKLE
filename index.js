@@ -55,8 +55,8 @@ async function getSmpStatus() {
  }
 }
 
-async function setStatusSmp(authKey){
-    serverRunning = await getSmpStatus(authKey)
+async function setStatusSmp(){
+    serverRunning = await getSmpStatus()
     if (serverRunning == true) {
         client.user.setActivity({ name: 'craig', type: ActivityType.Custom, state: 'FINKLE SMP ONLINE @ finkle.ddns.net' })
     } else {
@@ -83,8 +83,7 @@ Keep your responses concise (under 4 sentences) unless asked for a long explanat
 // It makes some properties non-nullable.
 client.once(Events.ClientReady, async (readyClient) => {
     console.log(`Ready! Logged in as ${readyClient.user.tag}`);
-    authKey = await smpAuth()
-    setInterval(setStatusSmp, 10000, authKey)
+    setInterval(setStatusSmp, 10000)
 });
 client.commands = new Collection();
 // Log in to Discord with your client's token
