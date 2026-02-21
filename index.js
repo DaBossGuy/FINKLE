@@ -21,7 +21,7 @@ const client = new Client({
 async function smpAuth() {
     const authData = { username: craftyUsername, password: craftyPassword }
     try {
-        const response = await fetch('https://finkle.ddns.net:8443/api/v2/auth/login', {
+        const response = await fetch('https://localhost:8443/api/v2/auth/login', {
             method: 'POST',
             headers: {
                 'accept' : 'application/json',
@@ -42,7 +42,7 @@ async function smpAuth() {
 async function getSmpStatus() {
     const authKey = await smpAuth()
     try {
-    const response = await fetch('https://finkle.ddns.net:8443/api/v2/servers/7aa6fa15-1976-4a6c-99b2-00cc56dc431f/stats', {
+    const response = await fetch('https://localhost:8443/api/v2/servers/7aa6fa15-1976-4a6c-99b2-00cc56dc431f/stats', {
         method: 'GET',
         headers: {
             'accept': 'application/json',
@@ -60,7 +60,7 @@ async function getSmpStatus() {
 async function setStatusSmp(){
     serverRunning = await getSmpStatus()
     if (serverRunning == true) {
-        client.user.setActivity({ name: 'craig', type: ActivityType.Custom, state: 'FINKLE SMP ONLINE @ finkle.ddns.net' })
+        client.user.setActivity({ name: 'craig', type: ActivityType.Custom, state: 'FINKLE SMP ONLINE @ play.sebatian.us' })
     } else {
         client.user.setActivity({ name: 'craig', type: ActivityType.Custom, state: '❌FINKLE SMP OFFLINE????❌' })
     }
